@@ -1,0 +1,40 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "firstName": "Abhishek",
+      "lastName": "rggrgr",
+      "email": "abhirang@gmail.com",
+      "mobileNum": 2,
+      "salary": 545456
+    },
+    {
+      "firstName": "hhgg",
+      "lastName": "hgh",
+      "email": "343434@gmail.com",
+      "mobileNum": 4,
+      "salary": 54545466,
+      "id": 2
+    },
+    {
+      "id": 3,
+      "firstName": "fgf",
+      "lastName": "fgf",
+      "email": "fgfgfgf@gmail.com",
+      "mobileNum": 1223344555,
+      "salary": 308899
+    },
+    {
+      "firstName": "Abhishek",
+      "lastName": "Rangnekar",
+      "email": "abhirangnkar713@gmail.com",
+      "mobileNum": 9867508130,
+      "salary": 1567879,
+      "id": 4
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

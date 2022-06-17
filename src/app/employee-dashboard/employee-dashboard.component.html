@@ -1,0 +1,112 @@
+<nav class="navbar navbar-expand-lg bg-primary">
+    <div class="container-fluid">
+      <h1 style="color: white">Angular 13 CRUD</h1>
+      <div class="d-flex">
+        <button
+          type="button"
+          class="btn btn-success"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          (click)="clickEmp()"
+        >
+          Add Employee
+        </button>
+      </div>
+    </div>
+  </nav>
+  
+  <table class="table mt-3">
+    <thead>
+      <tr>
+        <th scope="col">Employee Id</th>
+        <th scope="col">First Name</th>
+        <th scope="col">last Name</th>
+        <th scope="col">Email Id</th>
+        <th scope="col">Mobile No</th>
+        <th scope="col">Salary</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <tr *ngFor="let emp of EmployeeData">
+        <td>{{emp.id}}</td>
+        <td>{{emp.firstName}}</td>
+        <td>{{emp.lastName}}</td>
+        <td>{{emp.email}}</td>
+        <td>{{emp.mobileNum}}</td>
+        <td>{{emp.salary}}</td>
+        <td>
+          <button type="button" class="btn btn-info" data-bs-toggle="modal"
+          data-bs-target="#exampleModal" (click)="onEdit(emp)">Edit</button>
+          <button type="button" class="btn btn-danger" style="margin-left: 5px;" (click)="deleteEmp(emp)">Delete</button>
+         
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <!-- Button trigger modal -->
+  
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Employee Details</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="EmployeeDetails">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"> First Name *</label>
+                <input type="text" class="form-control" placeholder="Enter First Name"  formControlName="firstName">
+                <span style="color: red;" *ngIf="EmployeeDetails.controls['firstName'].errors">First Name is required</span>
+                
+               </div>
+               <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label"> Last Name *</label>
+                  <input type="text" class="form-control" placeholder="Enter Last Name" formControlName="lastName">
+                  <span  style="color: red;" *ngIf="EmployeeDetails.controls['lastName'].errors">Last Name is required</span>
+                 </div>
+                 <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label"> Email *</label>
+                  <input type="email" class="form-control" placeholder="Enter email id" formControlName="email">
+                  <span style="color: red;" *ngIf="EmployeeDetails.controls['email'].errors">EmailId is required  </span>
+                 </div>
+                 <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Mobile Number *</label>
+                  <input type="number" class="form-control" placeholder="Enter Mobile Number" formControlName="mobileNum" >
+                  <span  style="color: red;"*ngIf="EmployeeDetails.controls['mobileNum'].errors">Mobile Number is Required </span>
+                  <!-- <span  style="color: red;"*ngIf="EmployeeDetails.controls['mobileNum'].hasError('minlength')">plz check moble num </span> -->
+                 </div>
+                 <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Salary *</label>
+                  <input type="number" class="form-control" placeholder="Enter Salary" formControlName="salary">
+                  <span  style="color: red;"*ngIf="EmployeeDetails.controls['salary'].errors">Salary is Required</span>
+                 </div>
+               
+         
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="cancle" data-bs-dismiss="modal" (click)="closeForm()">
+            Close
+          </button>
+          <button type="button" class="btn btn-primary" *ngIf="showAdd" [disabled]="!EmployeeDetails.valid" (click)="postData()">Add</button>
+          <button type="button" class="btn btn-success"  *ngIf="showUpdate" (click)="updateEmp()">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
